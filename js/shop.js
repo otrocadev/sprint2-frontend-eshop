@@ -1,5 +1,6 @@
 import { storeStatus } from './store-status.js'
 import { buy } from './shop/buy.js'
+import { cleanCart } from './shop/cleantCart.js'
 
 const itemButtons = document.querySelectorAll('[data-product-id]')
 itemButtons.forEach((itemButton) => {
@@ -8,9 +9,6 @@ itemButtons.forEach((itemButton) => {
     buy(id)
   })
 })
-
-// Exercise 2
-const cleanCart = () => {}
 
 // Exercise 3
 const calculateTotal = () => {
@@ -35,5 +33,3 @@ const removeFromCart = (id) => {}
 const open_modal = () => {
   printCart()
 }
-
-console.log(storeStatus.cart)
