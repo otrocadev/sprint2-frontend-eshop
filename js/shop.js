@@ -23,7 +23,6 @@ export const calculateTotal = (discounted = false) => {
     if (discounted) {
       storeStatus.subTotalWithDiscount = 0
       if (product.discountedPrice) {
-        console.log('detecto que hi ha un discountedPrice')
         const productTotalPrice = product.discountedPrice * product.amount
         storeStatus.subTotalWithDiscount =
           storeStatus.subTotalWithDiscount + productTotalPrice
