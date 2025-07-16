@@ -14,7 +14,9 @@ export const applyPromotionsCart = () => {
           product.price,
           product.offer.percent
         )
-        storeStatus.total = storeStatus.total - discountedPrice
+        storeStatus.subTotalWithDiscount = storeStatus.total
+        storeStatus.subTotalWithDiscount =
+          storeStatus.subTotalWithDiscount - discountedPrice
       }
     }
     return

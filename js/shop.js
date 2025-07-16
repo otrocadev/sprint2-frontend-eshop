@@ -54,4 +54,4 @@ console.log(storeStatus.cart)
 console.log(storeStatus.total)
 
 applyPromotionsCart()
-console.log(storeStatus.total)
+console.log(storeStatus.subTotalWithDiscount)
