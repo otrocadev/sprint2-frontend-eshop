@@ -1,6 +1,5 @@
 import { storeStatus } from './store-status.js'
 import { buy } from './shop/buy.js'
-import { cleanCart } from './shop/cleantCart.js'
 
 const itemButtons = document.querySelectorAll('[data-product-id]')
 itemButtons.forEach((itemButton) => {
@@ -10,9 +9,13 @@ itemButtons.forEach((itemButton) => {
   })
 })
 
-// Exercise 3
-const calculateTotal = () => {
-  // Calculate total price of the cart using the "cartList" array
+export const cleanCart = () => (storeStatus.cart.length = 0)
+
+export const calculateTotal = () => {
+  storeStatus.cart.forEach((product) => {
+    const productsTotalPrice = product.price * product.amount
+    storeStatus.total = storeStatus.total + productsTotalPrice
+  })
 }
 
 // Exercise 4
@@ -33,3 +36,13 @@ const removeFromCart = (id) => {}
 const open_modal = () => {
   printCart()
 }
+
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+
+calculateTotal()
+
+console.log(storeStatus.cart)
+console.log(storeStatus.total)
