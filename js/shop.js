@@ -1,5 +1,6 @@
 import { storeStatus } from './store-status.js'
 import { buy } from './shop/buy.js'
+import { applyPromotionsCart } from './shop/applyPromotionsCart.js'
 
 const itemButtons = document.querySelectorAll('[data-product-id]')
 itemButtons.forEach((itemButton) => {
@@ -16,11 +17,6 @@ export const calculateTotal = () => {
     const productsTotalPrice = product.price * product.amount
     storeStatus.total = storeStatus.total + productsTotalPrice
   })
-}
-
-// Exercise 4
-const applyPromotionsCart = () => {
-  // Apply promotions to each item in the array "cart"
 }
 
 // Exercise 5
@@ -41,8 +37,21 @@ buy(3)
 buy(3)
 buy(3)
 buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
+buy(3)
 
 calculateTotal()
-
 console.log(storeStatus.cart)
+console.log(storeStatus.total)
+
+applyPromotionsCart()
 console.log(storeStatus.total)
