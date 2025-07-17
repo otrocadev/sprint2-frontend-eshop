@@ -13,24 +13,15 @@ itemButtons.forEach((itemButton) => {
 
 export const cleanCart = () => (storeStatus.cart.length = 0)
 
-export const calculateTotal = (discounted = false) => {
+export const calculateTotal = () => {
   storeStatus.cart.forEach((product) => {
-    if (!discounted) {
-      const productTotalPrice = product.price * product.amount
+    if (product.discountedPrice) {
+      const productTotalPrice = product.discountedPrice * product.amount
       storeStatus.total = storeStatus.total + productTotalPrice
       return
-    }
-    if (discounted) {
-      storeStatus.subTotalWithDiscount = 0
-      if (product.discountedPrice) {
-        const productTotalPrice = product.discountedPrice * product.amount
-        storeStatus.subTotalWithDiscount =
-          storeStatus.subTotalWithDiscount + productTotalPrice
-      } else {
-        const productTotalPrice = product.price * product.amount
-        storeStatus.subTotalWithDiscount =
-          storeStatus.subTotalWithDiscount + productTotalPrice
-      }
+    } else if (product.discountedPrice) {
+      const productTotalPrice = product.price * product.amount
+      storeStatus.total = storeStatus.total + productTotalPrice
     }
   })
 }
@@ -40,32 +31,28 @@ export const calculateTotal = (discounted = false) => {
 // Exercise 7
 const removeFromCart = (id) => {}
 
+const cartModal = document.getElementById('cartModal')
+
 const open_modal = () => {
+  cartModal.classList.remove('inactive')
+  cartModal.classList.add('active')
+  calculateTotal()
+  applyPromotionsCart()
   printCart()
 }
 
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(1)
-buy(2)
-buy(3)
-buy(3)
-buy(6)
-buy(6)
-buy(7)
-buy(7)
+const close_modal = () => {
+  cartModal.classList.remove('active')
+  cartModal.classList.add('inactive')
+}
 
-calculateTotal()
-console.log(storeStatus.cart)
-console.log(storeStatus.total)
+const cartButton = document.getElementById('cart-button')
+cartButton.addEventListener('click', (e) => open_modal())
 
-applyPromotionsCart()
-console.log(storeStatus.subTotalWithDiscount)
+const closeButton = document.getElementById('modal-close-button')
+closeButton.addEventListener('click', (e) => close_modal())
 
-printCart()
+const cleanCartButton = document.getElementById('clean-cart-button')
+cleanCartButton.addEventListener('click', (e) => {
+  cleanCart()
+})

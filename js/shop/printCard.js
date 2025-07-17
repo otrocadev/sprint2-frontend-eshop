@@ -16,9 +16,11 @@ const createHTMLElement = (
 }
 
 const createProductHTMLELements = (container, product) => {
-  const totalPrice = product.price * product.amount
+  let productPrice = 0
+
   createHTMLElement('h3', container, product.name)
   if (!product.discountedPrice) {
+    productPrice = product.price * product.amount
     createHTMLElement(
       'span',
       container,
@@ -26,6 +28,7 @@ const createProductHTMLELements = (container, product) => {
       'cart-product-price'
     )
   } else {
+    productPrice = product.discountedPrice * product.amount
     createHTMLElement(
       'span',
       container,
@@ -40,7 +43,7 @@ const createProductHTMLELements = (container, product) => {
     )
   }
   createHTMLElement('span', container, product.amount)
-  createHTMLElement('span', container, 'Subtotal: $' + totalPrice.toFixed(2))
+  createHTMLElement('span', container, 'Subtotal: $' + productPrice.toFixed(2))
 }
 
 const listProductOnCheckout = (product, cartList) => {
@@ -65,6 +68,6 @@ export const printCart = () => {
     listProductOnCheckout(product, cartList)
   })
 
-  const totalPrice = document.getElementById('total_price')
-  totalPrice.innerText = storeStatus.total
+  const totalPrice = document.getElementById('total-amount-value')
+  totalPrice.innerText = '$' + storeStatus.total.toFixed(2)
 }

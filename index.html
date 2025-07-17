@@ -52,12 +52,7 @@
             </li>
           </ul>
         </nav>
-        <button
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#cartModal"
-          data-bs-auto-close="outside"
-        >
+        <button type="button" id="cart-button">
           <i class="fas fa-shopping-cart me-1" aria-hidden="true"></i>
           <span>Cart</span>
           <span id="count_product">0</span>
@@ -288,7 +283,7 @@
       <p>Copyright &copy; ShopNow <span id="current-year">2025</span></p>
     </footer>
 
-    <div id="cartModal">
+    <div id="cartModal" class="inactive">
       <div id="modal-content">
         <div id="modal-title">
           <h3>My Cart</h3>
@@ -298,7 +293,7 @@
         </div>
         <div id="modal-body">
           <div id="modal-products-list">
-            <button type="button" id="clean-cart">
+            <button type="button" id="clean-cart-button">
               <i class="fa-solid fa-trash"></i>
               Clean Cart
             </button>
@@ -313,7 +308,7 @@
             </h4>
             <div id="total-amount">
               <span>Total Order Amount</span>
-              <span id="total_amount_value">$100.00</span>
+              <span id="total-amount-value">$100.00</span>
             </div>
             <div id="checkout-button">
               <a href="checkout.html">Proceed to Checkout</a>

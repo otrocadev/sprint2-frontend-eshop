@@ -7,6 +7,14 @@
   --gray-4: #555;
 }
 
+.active {
+  display: flex;
+}
+
+.inactive {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
@@ -249,7 +257,6 @@ footer {
 }
 
 #cartModal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -318,7 +325,7 @@ footer {
       overflow-y: auto;
     }
 
-    #clean-cart {
+    #clean-cart-button {
       display: flex;
       align-items: center;
       justify-content: center;
