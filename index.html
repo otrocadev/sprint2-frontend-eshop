@@ -66,12 +66,20 @@
     </header>
 
     <main>
-      <section id="discount-banner">
-        <h1 class="display-4 fw-bolder">IT Academy Shop</h1>
-        <p class="lead fw-normal text-white-50 mb-0">
-          Get up to 50% off Today Only!
-        </p>
-      </section>
+      <div id="hero-contrainer">
+        <section id="hero">
+          <h1>IT Academy Shop</h1>
+          <span>
+            We believe true luxury lies in quality, not quantity. That’s why
+            each product you find here is carefully selected for its premium
+            materials, refined design, and timeless impact.
+          </span>
+        </section>
+        <section id="discount-banner">
+          <h2>IT Academy Shop</h2>
+          <p>Get up to 50% off Today Only!</p>
+        </section>
+      </div>
       <article class="product-section" id="grocery">
         <h2 class="product-section-title">
           <i class="fas fa-shopping-basket" aria-hidden="true"></i>
@@ -80,7 +88,7 @@
         <div class="products-listed">
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/1.png"
               alt="Cooking Oil product image"
               loading="lazy"
             />
@@ -96,7 +104,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/2.png"
               alt="Pasta product image"
               loading="lazy"
             />
@@ -116,7 +124,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/3.png"
               alt="Instant cupcake mixture product image"
               loading="lazy"
             />
@@ -145,7 +153,7 @@
         <div class="products-listed">
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/4.png"
               alt="All-in-1 product image"
               loading="lazy"
             />
@@ -165,7 +173,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/5.png"
               alt="Zero makeup kit product image"
               loading="lazy"
             />
@@ -185,7 +193,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/6.png"
               alt="Lip tints product image"
               loading="lazy"
             />
@@ -214,7 +222,7 @@
         <div class="products-listed">
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/7.png"
               alt="Lawn dress product image"
               loading="lazy"
             />
@@ -234,7 +242,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/8.png"
               alt="Lawn-chiffon combo product image"
               loading="lazy"
             />
@@ -254,7 +262,7 @@
           </article>
           <article>
             <img
-              src="./images/product.svg"
+              src="./images/products/9.png"
               alt="Toddler Frock product image"
               loading="lazy"
             />
@@ -277,84 +285,43 @@
     </main>
 
     <footer>
-        <p>
-          Copyright &copy; ShopNow <span id="current-year">2025</span>
-        </p>
-      </div>
+      <p>Copyright &copy; ShopNow <span id="current-year">2025</span></p>
     </footer>
 
-    <div
-      id="cartModal"
-      tabindex="-1"
-      aria-labelledby="cartModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel">
-              <i class="fas fa-cart-arrow-down" aria-hidden="true"></i>
-              My Cart
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+    <div id="cartModal">
+      <div id="modal-content">
+        <div id="modal-title">
+          <h3>My Cart</h3>
+          <button id="modal-close-button" type="button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div id="modal-body">
+          <div id="modal-products-list">
+            <button type="button" id="clean-cart">
+              <i class="fa-solid fa-trash"></i>
+              Clean Cart
+            </button>
           </div>
-          <div class="modal-body">
-            <h3 class="text-center bill px-5">Shopping Cart</h3>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Qty.</th>
-                    <th scope="col">Total <small>(with discount)</small></th>
-                  </tr>
-                </thead>
-                <tbody id="cart_list">
-                  <tr>
-                    <th scope="row">Cooking oil</th>
-                    <td>$10.5</td>
-                    <td>2</td>
-                    <td>$21</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Pasta</th>
-                    <td>$6.25</td>
-                    <td>1</td>
-                    <td>$6.25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Lawn dress</th>
-                    <td>$15</td>
-                    <td>3</td>
-                    <td>$45</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div id="checkout-summary">
+            <h4>
+              Checkout Summary
+              <div>
+                <span id="articles-count">6</span>
+                article(s)
+              </div>
+            </h4>
+            <div id="total-amount">
+              <span>Total Order Amount</span>
+              <span id="total_amount_value">$100.00</span>
             </div>
-            <div class="text-center fs-3">
-              Total: $<span id="total_price">100</span>
-            </div>
-            <div class="text-center">
-              <a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
-              <button
-                type="button"
-                class="btn btn-secondary m-3"
-                id="clean-cart"
-              >
-                Clean Cart
-              </button>
+            <div id="checkout-button">
+              <a href="checkout.html">Proceed to Checkout</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="./js/shop.js" type="module"></script>
     <script src="./js/checkout.js" type="module"></script>
   </body>

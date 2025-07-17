@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    name: 'cooking oil',
+    name: 'Cooking oil',
     price: 10.5,
     type: 'grocery',
     offer: {
@@ -18,7 +18,7 @@ export const products = [
   {
     id: 3,
     name: 'Instant cupcake mixture',
-    price: 5,
+    price: 5.0,
     type: 'grocery',
     offer: {
       number: 10,
@@ -28,7 +28,7 @@ export const products = [
   {
     id: 4,
     name: 'All-in-one',
-    price: 260,
+    price: 260.0,
     type: 'beauty',
   },
   {
@@ -46,7 +46,7 @@ export const products = [
   {
     id: 7,
     name: 'Lawn Dress',
-    price: 15,
+    price: 15.0,
     type: 'clothes',
   },
   {

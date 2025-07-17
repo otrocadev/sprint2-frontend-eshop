@@ -7,8 +7,8 @@ const addNewProduct = (id) => {
   storeStatus.cart.find((product) => product.id === id).amount = 1
 }
 
-const addAmountToProduct = (id, amount = 1) => {
-  storeStatus.cart.find((product) => product.id === id).amount += amount
+const addAmountToProduct = (id) => {
+  storeStatus.cart.find((product) => product.id === id).amount += 1
 }
 
 export const buy = (id) => {
