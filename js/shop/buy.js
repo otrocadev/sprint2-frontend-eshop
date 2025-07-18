@@ -1,15 +1,15 @@
 import { products } from '../mocked-data/products.js'
 import { storeStatus } from '../store-status.js'
 
-const addToTotalItemsCount = () => {
-  storeStatus.itemsCount++
-  updateCount()
-}
-
 const productsCount = document.getElementById('count_product')
 
 export const updateCount = () => {
   productsCount.innerText = storeStatus.itemsCount
+}
+
+const addToTotalItemsCount = () => {
+  storeStatus.itemsCount++
+  updateCount()
 }
 
 const addNewProduct = (id) => {

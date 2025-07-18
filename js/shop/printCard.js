@@ -18,32 +18,28 @@ const createHTMLElement = (
 }
 
 const createProductHTMLELements = (container, product) => {
-  let productPrice = 0
+  const isDiscounted = !!product.discountedPrice
+  const priceToUse = isDiscounted ? product.discountedPrice : product.price
+  const productPrice = priceToUse * product.amount
 
   createHTMLElement('h3', container, product.name)
-  if (!product.discountedPrice) {
-    productPrice = product.price * product.amount
-    createHTMLElement(
-      'span',
-      container,
-      '$' + product.price.toFixed(2),
-      'cart-product-price'
-    )
-  } else {
-    productPrice = product.discountedPrice * product.amount
+
+  if (isDiscounted) {
     createHTMLElement(
       'span',
       container,
       '$' + product.price.toFixed(2),
       'cart-discounted-price'
     )
-    createHTMLElement(
-      'span',
-      container,
-      '$' + product.discountedPrice.toFixed(2),
-      'cart-product-price'
-    )
   }
+
+  createHTMLElement(
+    'span',
+    container,
+    '$' + priceToUse.toFixed(2),
+    'cart-product-price'
+  )
+
   createHTMLElement('span', container, product.amount)
   createHTMLElement('span', container, 'Subtotal: $' + productPrice.toFixed(2))
 }
