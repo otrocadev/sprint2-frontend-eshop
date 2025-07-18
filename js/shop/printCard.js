@@ -67,7 +67,7 @@ const listProductOnCheckout = (product, cartList) => {
 const deleteAllCheckoutProducts = () => {
   const products = Array.from(cartList.children)
   products.forEach((product) => {
-    if (!product.id === 'clean-cart-button') {
+    if (product.id !== 'clean-cart-button') {
       product.remove()
     }
   })
@@ -75,9 +75,13 @@ const deleteAllCheckoutProducts = () => {
 
 export const printCart = () => {
   deleteAllCheckoutProducts()
+
   storeStatus.cart.forEach((product) => {
     listProductOnCheckout(product, cartList)
   })
+
+  const totalProducts = document.getElementById('articles-count')
+  totalProducts.innerText = storeStatus.itemsCount
 
   const totalPrice = document.getElementById('total-amount-value')
   totalPrice.innerText = '$' + storeStatus.total.toFixed(2)

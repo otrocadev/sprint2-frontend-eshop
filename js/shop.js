@@ -14,15 +14,14 @@ itemButtons.forEach((itemButton) => {
 export const cleanCart = () => (storeStatus.cart.length = 0)
 
 export const calculateTotal = () => {
+  storeStatus.total = 0
+
   storeStatus.cart.forEach((product) => {
-    if (product.discountedPrice) {
-      const productTotalPrice = product.discountedPrice * product.amount
-      storeStatus.total = storeStatus.total + productTotalPrice
-      return
-    } else if (product.discountedPrice) {
-      const productTotalPrice = product.price * product.amount
-      storeStatus.total = storeStatus.total + productTotalPrice
-    }
+    const priceToUse = product.discountedPrice
+      ? product.discountedPrice
+      : product.price
+    const productTotalPrice = priceToUse * product.amount
+    storeStatus.total += productTotalPrice
   })
 }
 
