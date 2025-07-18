@@ -1,5 +1,5 @@
 import { storeStatus } from './store-status.js'
-import { buy } from './shop/buy.js'
+import { buy, updateCount } from './shop/buy.js'
 import { applyPromotionsCart } from './shop/applyPromotionsCart.js'
 import { printCart } from './shop/printCard.js'
 
@@ -11,7 +11,13 @@ itemButtons.forEach((itemButton) => {
   })
 })
 
-export const cleanCart = () => (storeStatus.cart.length = 0)
+export const cleanCart = () => {
+  storeStatus.cart.length = 0
+  storeStatus.itemsCount = 0
+  storeStatus.total = 0
+  updateCount()
+  printCart()
+}
 
 export const calculateTotal = () => {
   storeStatus.total = 0

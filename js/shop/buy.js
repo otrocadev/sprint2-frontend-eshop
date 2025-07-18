@@ -7,7 +7,8 @@ const addToTotalItemsCount = () => {
 }
 
 const productsCount = document.getElementById('count_product')
-const updateCount = () => {
+
+export const updateCount = () => {
   productsCount.innerText = storeStatus.itemsCount
 }
 
