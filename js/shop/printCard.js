@@ -1,5 +1,7 @@
 import { storeStatus } from '../store-status.js'
 
+const cartList = document.getElementById('modal-products-list')
+
 const createHTMLElement = (
   htmlElement,
   parentElement,
@@ -62,8 +64,17 @@ const listProductOnCheckout = (product, cartList) => {
   createProductHTMLELements(newProductTextElement, product)
 }
 
+const deleteAllCheckoutProducts = () => {
+  const products = Array.from(cartList.children)
+  products.forEach((product) => {
+    if (!product.id === 'clean-cart-button') {
+      product.remove()
+    }
+  })
+}
+
 export const printCart = () => {
-  const cartList = document.getElementById('modal-products-list')
+  deleteAllCheckoutProducts()
   storeStatus.cart.forEach((product) => {
     listProductOnCheckout(product, cartList)
   })
