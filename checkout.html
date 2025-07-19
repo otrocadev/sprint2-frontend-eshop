@@ -65,84 +65,109 @@
     </header>
 
     <main>
-      <div id="checkout-container">
+      <div id="title-container">
         <h1>Checkout Page</h1>
-        <h3><i class="fas fa-dollar-sign"></i>Cash on Delivery</h3>
-        <h3><i class="fas fa-arrows-alt-h"></i>100% Return</h3>
-        <h3><i class="far fa-thumbs-up"></i>Quality Assured</h3>
-        <h3><i class="fas fa-stopwatch"></i>Delivery on time</h3>
+      </div>
+      <div id="checkout-container">
+        <div id="checkout-info">
+          <ul>
+            <li>
+              <h3><i class="fas fa-dollar-sign"></i>Cash on Delivery</h3>
+            </li>
+            <li>
+              <h3><i class="fas fa-arrows-alt-h"></i>100% Return</h3>
+            </li>
+            <li>
+              <h3><i class="far fa-thumbs-up"></i>Quality Assured</h3>
+            </li>
+            <li>
+              <h3><i class="fas fa-stopwatch"></i>Delivery on time</h3>
+            </li>
+          </ul>
+        </div>
         <form>
+          <div class="form-camp">
+            <label for="fName">First Name</label>
+            <input
+              id="fName"
+              type="text"
+              placeholder="Enter your first name"
+              required
+            />
+            <div id="errorName" class="camp-error">
+              This field is required and must have, at least, 3 characters
+            </div>
+          </div>
+          <div class="form-camp">
+            <label for="fLastN">Last Name</label>
+            <input
+              id="fLastN"
+              type="text"
+              placeholder="Enter your last name(s)"
+              minlength="3"
+              required
+            />
+            <div id="errorLastN" class="camp-error">
+              This field is required and must have, at least, 3 characters
+            </div>
+          </div>
+          <div class="form-camp">
+            <label for="fEmail">Email</label>
+            <input
+              id="fEmail"
+              type="email"
+              placeholder="enter your email"
+              minlength="3"
+              required
+            />
+            <div id="errorEmail" class="camp-error">
+              This field is required and must contain an '@' and have, at least,
+              3 characters
+            </div>
+          </div>
+          <div class="form-camp">
+            <label for="fPassword">Password</label>
+            <input
+              id="fPassword"
+              title="(4-8 characters)"
+              type="password"
+              minlength="4"
+              maxlength="8"
+              placeholder="Enter a secure password"
+              required
+            />
+            <div id="errorPassword" class="camp-error">
+              Enter a correct password
+            </div>
+          </div>
+          <div class="form-camp" class="camp-error">
+            <label for="fAddress">Address</label>
+            <input
+              id="fAddress"
+              type="text"
+              placeholder="Enter your full address"
+              minlength="3"
+              required
+            />
+            <div id="errorAddress" class="camp-error">
+              This field is required and must have, at least, 3 characters
+            </div>
+          </div>
+          <div class="form-camp">
+            <label for="fPhone">Phone Number</label>
+            <input
+              id="fPhone"
+              type="number"
+              placeholder="Enter your phone number"
+            />
+            <div id="errorPhone" class="camp-error">
+              Invalid phone number!! Must be 9 digits with no letters
+            </div>
+          </div>
           <div>
-            <div>
-              <div>
-                <label for="fName">First Name:</label>
-                <input id="fName" type="text" placeholder="First Name" />
-                <div id="errorName">
-                  This field is required and must have, at least, 3 characters
-                </div>
-              </div>
-              <div>
-                <label for="fEmail">Email:</label>
-                <input
-                  id="fEmail"
-                  type="email"
-                  placeholder="Email"
-                  minlength="3"
-                />
-                <div id="errorEmail">
-                  This field is required and must contain an '@' and have, at
-                  least, 3 characters
-                </div>
-              </div>
-              <div>
-                <label for="fAddress">Address:</label>
-                <input
-                  id="fAddress"
-                  type="text"
-                  placeholder="Address"
-                  minlength="3"
-                />
-                <div id="errorAddress">
-                  This field is required and must have, at least, 3 characters
-                </div>
-              </div>
-            </div>
-            <div>
-              <div>
-                <label for="fLastN">Last Name:</label>
-                <input
-                  id="fLastN"
-                  type="text"
-                  placeholder="Last Name"
-                  minlength="3"
-                />
-                <div id="errorLastN">
-                  This field is required and must have, at least, 3 characters
-                </div>
-              </div>
-              <div>
-                <label for="fPassword">Password:</label>
-                <input
-                  id="fPassword"
-                  title="(4-8 characters)"
-                  type="password"
-                  minlength="4"
-                  maxlength="8"
-                  placeholder="Password"
-                />
-                <div id="errorPassword">Enter a correct password</div>
-              </div>
-              <div>
-                <label for="fPhone">Phone Number:</label>
-                <input id="fPhone" type="number" placeholder="Phone No." />
-                <div id="errorPhone">
-                  Invalid phone number!! Must be 9 digits with no letters
-                </div>
-              </div>
-            </div>
-            <div>
-              <button type="submit" id="btn" onclick="validate()">Save</button>
-            </div>
+            <button type="submit" id="btn" onclick="validate()">
+              Place order
+            </button>
           </div>
         </form>
       </div>
