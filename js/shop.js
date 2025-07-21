@@ -1,5 +1,7 @@
 import { storeStatus } from './store-status.js'
-import { buy } from './shop/buy.js'
+import { buy, updateCount } from './shop/buy.js'
+import { applyPromotionsCart } from './shop/applyPromotionsCart.js'
+import { printCart } from './shop/printCard.js'
 
 const itemButtons = document.querySelectorAll('[data-product-id]')
 itemButtons.forEach((itemButton) => {
@@ -9,22 +11,24 @@ itemButtons.forEach((itemButton) => {
   })
 })
 
-// Exercise 2
-const cleanCart = () => {}
-
-// Exercise 3
-const calculateTotal = () => {
-  // Calculate total price of the cart using the "cartList" array
+export const cleanCart = () => {
+  storeStatus.cart.length = 0
+  storeStatus.itemsCount = 0
+  storeStatus.total = 0
+  updateCount()
+  printCart()
 }
 
-// Exercise 4
-const applyPromotionsCart = () => {
-  // Apply promotions to each item in the array "cart"
-}
+export const calculateTotal = () => {
+  storeStatus.total = 0
 
-// Exercise 5
-const printCart = () => {
-  // Fill the shopping cart modal manipulating the shopping cart dom
+  storeStatus.cart.forEach((product) => {
+    const priceToUse = product.discountedPrice
+      ? product.discountedPrice
+      : product.price
+    const productTotalPrice = priceToUse * product.amount
+    storeStatus.total += productTotalPrice
+  })
 }
 
 // ** Nivell II **
@@ -32,8 +36,28 @@ const printCart = () => {
 // Exercise 7
 const removeFromCart = (id) => {}
 
+const cartModal = document.getElementById('cartModal')
+
 const open_modal = () => {
+  cartModal.classList.remove('inactive')
+  cartModal.classList.add('active')
+  calculateTotal()
+  applyPromotionsCart()
   printCart()
 }
 
-console.log(storeStatus.cart)
+const close_modal = () => {
+  cartModal.classList.remove('active')
+  cartModal.classList.add('inactive')
+}
+
+const cartButton = document.getElementById('cart-button')
+cartButton.addEventListener('click', (e) => open_modal())
+
+const closeButton = document.getElementById('modal-close-button')
+closeButton.addEventListener('click', (e) => close_modal())
+
+const cleanCartButton = document.getElementById('clean-cart-button')
+cleanCartButton.addEventListener('click', (e) => {
+  cleanCart()
+})

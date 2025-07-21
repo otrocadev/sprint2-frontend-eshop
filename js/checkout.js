@@ -1,28 +1,88 @@
+import {
+  validateName,
+  validateSurname,
+  validateEmail,
+  validatePassword,
+  validateAdress,
+  validatePhone,
+} from './checkout/checkoutValidations.js'
 
-// Exercise 6
+const submitBtn = document.getElementById('btn')
+submitBtn.addEventListener('click', (event) => {
+  validate()
+})
+
+const showError = (errorElement) => {
+  errorElement.classList.add('visible')
+}
+
+const hideError = (errorElement) => {
+  errorElement.classList.remove('visible')
+}
+
 const validate = () => {
-	let error = 0;
-	// Get the input fields
-	const fName = document.getElementById("fName");
-	const fEmail = document.getElementById("fEmail");
+  let error = 0
 
-	// Get the error elements
-	const errorName = document.getElementById("errorName");
-	const errorEmail = document.getElementById("errorEmail");  
-	
-	// Validate fields entered by the user: name, phone, password, and email
-	if(fName.value.trim() == ""){
-		error++;
-	}
+  const fName = document.getElementById('fName')
+  const fLastN = document.getElementById('fLastN')
+  const fEmail = document.getElementById('fEmail')
+  const fPassword = document.getElementById('fPassword')
+  const fAddress = document.getElementById('fAddress')
+  const fPhone = document.getElementById('fPhone')
 
-	if(fEmail.value == ""){
-		error++;
-	}
-	 
-	if(error>0){
-		alert("Please fill in all required fields.");
-	}else{
-		alert("Form submitted successfully");
-	}
+  const errorName = document.getElementById('errorName')
+  const errorLastN = document.getElementById('errorLastN')
+  const errorEmail = document.getElementById('errorEmail')
+  const errorPassword = document.getElementById('errorPassword')
+  const errorAddress = document.getElementById('errorAddress')
+  const errorPhone = document.getElementById('errorPhone')
 
+  if (validateName(fName.value)) {
+    hideError(errorName)
+  } else {
+    showError(errorName)
+    error++
+  }
+
+  if (validateSurname(fLastN.value)) {
+    hideError(errorLastN)
+  } else {
+    showError(errorLastN)
+    error++
+  }
+
+  if (validateEmail(fEmail.value)) {
+    hideError(errorEmail)
+  } else {
+    showError(errorEmail)
+    error++
+  }
+
+  if (validatePassword(fPassword.value)) {
+    hideError(errorPassword)
+  } else {
+    showError(errorPassword)
+    error++
+  }
+
+  if (validateAdress(fAddress.value)) {
+    hideError(errorAddress)
+  } else {
+    showError(errorAddress)
+    error++
+  }
+
+  if (validatePhone(fPhone.value)) {
+    hideError(errorPhone)
+  } else {
+    showError(errorPhone)
+    error++
+  }
+
+  if (error > 0) {
+    alert('Please fill in all required fields.')
+  } else {
+    console.log(error)
+    alert('Form submitted successfully')
+  }
 }
