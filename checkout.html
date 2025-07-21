@@ -149,19 +149,26 @@
           </div>
           <div class="form-camp">
             <label for="fPhone">Phone Number</label>
-            <input
-              id="fPhone"
-              type="number"
-              placeholder="Enter your phone number"
-            />
+            <div id="phone-container">
+              <select name="" id="">
+                <option value="US">🇺🇸 +1</option>
+                <option value="RU">🇷🇺 +7</option>
+                <option value="FR">🇫🇷 +33</option>
+                <option value="ES">🇪🇸 +34</option>
+                <option value="CH">🇨🇳 +86</option>
+              </select>
+              <input
+                id="fPhone"
+                type="text"
+                placeholder="Enter your phone number"
+              />
+            </div>
             <div id="errorPhone" class="camp-error">
               Invalid phone number!! Must be 9 digits with no letters
             </div>
           </div>
           <div>
-            <button type="submit" id="btn" onclick="validate()">
-              Place order
-            </button>
+            <button id="btn">Place order</button>
           </div>
         </form>
       </div>
