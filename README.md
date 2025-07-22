@@ -1,4 +1,4 @@
-# Sprint 2 (2.2. e-comerce - IT Academy FrontEnd Course
+# Sprint 2.2. e-comerce - IT Academy FrontEnd Course
 
 ## 🎯 Objectives
 
