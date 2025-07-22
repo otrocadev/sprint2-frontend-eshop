@@ -10,7 +10,7 @@ The objective in this repo is to imagine a situation and do the steps necessary 
 
 ## 🖥️ Preview of the project
 
-https://github.com/user-attachments/assets/f685e992-9056-448e-af41-1299ba12dc38
+https://github.com/user-attachments/assets/36b50193-0f90-40ea-b2f4-7f6535b0032b
 
 🖱️ Check out the [**live demo**](https://sprint2-frontend-shop.vercel.app/)
 
