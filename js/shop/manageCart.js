@@ -31,7 +31,7 @@ const addAmountToProduct = (id) => {
   storeStatus.cart.find((product) => product.id === id).amount += 1
 }
 
-const reduceAmountofProduct = (id) => {
+const reduceAmountOfProduct = (id) => {
   storeStatus.cart.find((product) => product.id === id).amount -= 1
 }
 
@@ -44,7 +44,7 @@ export const addProductToCart = (id) => {
 export const reduceProductFromCart = (id) => {
   const hasMoreThanOne =
     storeStatus.cart.find((product) => product.id === id).amount > 1
-  hasMoreThanOne ? reduceAmountofProduct(id) : deleteExistingProduct(id)
+  hasMoreThanOne ? reduceAmountOfProduct(id) : deleteExistingProduct(id)
   reduceTotalItemsCount()
 }
 
