@@ -396,6 +396,51 @@ footer {
       text-decoration: line-through;
       color: var(--gray-3);
     }
+
+    .cart-product-amount {
+      display: flex;
+      width: fit-content;
+      border: 2px solid var(--gray-4);
+      margin: 0.2rem 0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem 0.8rem;
+      }
+      button {
+        border: none;
+        color: black;
+        cursor: pointer;
+        padding: 0.2rem 0.8rem;
+        background-color: transparent;
+        font-size: large;
+        font-weight: 700;
+
+        &:hover {
+          background-color: var(--gray-3);
+          color: black;
+        }
+      }
+
+      .subtrack-button-amount {
+        border-right: 2px solid var(--gray-4);
+      }
+
+      .add-button-amount {
+        border-left: 2px solid var(--gray-4);
+      }
+    }
+
+    .total-product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: black;
+      margin-top: auto;
+    }
   }
 
   #checkout-summary {

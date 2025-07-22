@@ -1,4 +1,10 @@
 import { storeStatus } from '../store-status.js'
+import { applyPromotionsCart } from './applyPromotionsCart.js'
+import {
+  addProductToCart,
+  reduceProductFromCart,
+  calculateTotal,
+} from './manageCart.js'
 
 const cartList = document.getElementById('modal-products-list')
 
@@ -15,6 +21,37 @@ const createHTMLElement = (
     newElement.classList.add(className)
   }
   parentElement.appendChild(newElement)
+}
+
+const createAmountComponent = (productContainer, productid, amount) => {
+  const ammountContainer = document.createElement('div')
+  const subTrackButton = document.createElement('button')
+  const addButton = document.createElement('button')
+  const amountText = document.createElement('span')
+
+  ammountContainer.className = 'cart-product-amount'
+  subTrackButton.className = 'subtrack-button-amount'
+  addButton.className = 'add-button-amount'
+
+  subTrackButton.innerText = '-'
+  addButton.innerText = '+'
+  amountText.innerText = amount
+
+  ammountContainer.appendChild(subTrackButton)
+  ammountContainer.appendChild(amountText)
+  ammountContainer.appendChild(addButton)
+
+  productContainer.appendChild(ammountContainer)
+
+  addButton.addEventListener('click', () => {
+    addProductToCart(productid)
+    printCart()
+  })
+
+  subTrackButton.addEventListener('click', () => {
+    reduceProductFromCart(productid)
+    printCart()
+  })
 }
 
 const createProductHTMLELements = (container, product) => {
@@ -40,8 +77,13 @@ const createProductHTMLELements = (container, product) => {
     'cart-product-price'
   )
 
-  createHTMLElement('span', container, product.amount)
-  createHTMLElement('span', container, 'Subtotal: $' + productPrice.toFixed(2))
+  createAmountComponent(container, product.id, product.amount)
+  createHTMLElement(
+    'span',
+    container,
+    'Subtotal: $' + productPrice.toFixed(2),
+    'total-product-price'
+  )
 }
 
 const listProductOnCheckout = (product, cartList) => {
@@ -71,6 +113,8 @@ const deleteAllCheckoutProducts = () => {
 
 export const printCart = () => {
   deleteAllCheckoutProducts()
+  applyPromotionsCart()
+  calculateTotal()
 
   storeStatus.cart.forEach((product) => {
     listProductOnCheckout(product, cartList)

@@ -1,4 +1,4 @@
-import { calculateTotal } from '../shop.js'
+import { calculateTotal } from '../shop/manageCart.js'
 import { storeStatus } from '../store-status.js'
 
 const calculatediscountedPrice = (originalPrice, discount) => {
