@@ -7,6 +7,12 @@ export const updateCount = () => {
   productsCount.innerText = storeStatus.itemsCount
 }
 
+const checkOfferAmmount = (id) => {
+  const product = storeStatus.cart.find((product) => product.id === id)
+  if (!product.offer) return false
+  else return product.offer.number
+}
+
 const addToTotalItemsCount = () => {
   storeStatus.itemsCount++
   updateCount()
@@ -35,7 +41,13 @@ const addAmountToProduct = (id) => {
 }
 
 const reduceAmountOfProduct = (id) => {
-  storeStatus.cart.find((product) => product.id === id).amount -= 1
+  const product = storeStatus.cart.find((product) => product.id === id)
+  product.amount -= 1
+  const offerAmmount = checkOfferAmmount(id)
+  if (!offerAmmount) return
+  else {
+    if (product.amount < offerAmmount) delete product.discountedPrice
+  }
 }
 
 export const addProductToCart = (id) => {
