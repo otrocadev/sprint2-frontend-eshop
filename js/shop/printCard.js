@@ -1,4 +1,11 @@
 import { storeStatus } from '../store-status.js'
+import { applyPromotionsCart } from './applyPromotionsCart.js'
+import {
+  addProductToCart,
+  reduceProductFromCart,
+  deleteExistingProduct,
+  calculateTotal,
+} from './manageCart.js'
 
 const cartList = document.getElementById('modal-products-list')
 
@@ -15,6 +22,52 @@ const createHTMLElement = (
     newElement.classList.add(className)
   }
   parentElement.appendChild(newElement)
+}
+
+const createAmountComponent = (productContainer, productid, amount) => {
+  const ammountContainer = document.createElement('div')
+  const amountManager = document.createElement('div')
+  const subTrackButton = document.createElement('button')
+  const addButton = document.createElement('button')
+  const amountText = document.createElement('span')
+  const binButton = document.createElement('button')
+  const binIcon = document.createElement('i')
+
+  amountManager.className = 'cart-product-amount'
+  subTrackButton.className = 'subtrack-button-amount'
+  addButton.className = 'add-button-amount'
+  ammountContainer.className = 'ammount-container'
+  binButton.className = 'bin-button'
+  binIcon.className = 'fa-solid fa-trash'
+
+  subTrackButton.innerText = '-'
+  addButton.innerText = '+'
+  amountText.innerText = amount
+
+  amountManager.appendChild(subTrackButton)
+  amountManager.appendChild(amountText)
+  amountManager.appendChild(addButton)
+  binButton.appendChild(binIcon)
+
+  ammountContainer.appendChild(amountManager)
+  ammountContainer.appendChild(binButton)
+
+  productContainer.appendChild(ammountContainer)
+
+  addButton.addEventListener('click', () => {
+    addProductToCart(productid)
+    printCart()
+  })
+
+  subTrackButton.addEventListener('click', () => {
+    reduceProductFromCart(productid)
+    printCart()
+  })
+
+  binButton.addEventListener('click', () => {
+    reduceProductFromCart(productid, true)
+    printCart()
+  })
 }
 
 const createProductHTMLELements = (container, product) => {
@@ -40,8 +93,13 @@ const createProductHTMLELements = (container, product) => {
     'cart-product-price'
   )
 
-  createHTMLElement('span', container, product.amount)
-  createHTMLElement('span', container, 'Subtotal: $' + productPrice.toFixed(2))
+  createAmountComponent(container, product.id, product.amount)
+  createHTMLElement(
+    'span',
+    container,
+    'Subtotal: $' + productPrice.toFixed(2),
+    'total-product-price'
+  )
 }
 
 const listProductOnCheckout = (product, cartList) => {
@@ -71,6 +129,8 @@ const deleteAllCheckoutProducts = () => {
 
 export const printCart = () => {
   deleteAllCheckoutProducts()
+  applyPromotionsCart()
+  calculateTotal()
 
   storeStatus.cart.forEach((product) => {
     listProductOnCheckout(product, cartList)

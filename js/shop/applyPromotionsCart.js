@@ -1,7 +1,7 @@
-import { calculateTotal } from '../shop.js'
+import { calculateTotal } from '../shop/manageCart.js'
 import { storeStatus } from '../store-status.js'
 
-const calculatediscountedPrice = (originalPrice, discount) => {
+const calculateDiscountedPrice = (originalPrice, discount) => {
   const discountedPrice = originalPrice * ((100 - discount) / 100)
   return discountedPrice
 }
@@ -12,7 +12,7 @@ export const applyPromotionsCart = () => {
     if (product.offer) {
       if (product.amount >= product.offer.number) {
         isAnyProductDiscounted = true
-        const discountedPrice = calculatediscountedPrice(
+        const discountedPrice = calculateDiscountedPrice(
           product.price,
           product.offer.percent
         )
