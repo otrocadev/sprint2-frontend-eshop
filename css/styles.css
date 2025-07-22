@@ -397,6 +397,28 @@ footer {
       color: var(--gray-3);
     }
 
+    .ammount-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      gap: 0.6rem;
+
+      .bin-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        border: none;
+        padding: 0.25rem;
+        background: none;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
     .cart-product-amount {
       display: flex;
       width: fit-content;
@@ -411,6 +433,7 @@ footer {
         justify-content: center;
         padding: 0.2rem 0.8rem;
       }
+
       button {
         border: none;
         color: black;

@@ -3,6 +3,7 @@ import { applyPromotionsCart } from './applyPromotionsCart.js'
 import {
   addProductToCart,
   reduceProductFromCart,
+  deleteExistingProduct,
   calculateTotal,
 } from './manageCart.js'
 
@@ -25,21 +26,31 @@ const createHTMLElement = (
 
 const createAmountComponent = (productContainer, productid, amount) => {
   const ammountContainer = document.createElement('div')
+  const amountManager = document.createElement('div')
   const subTrackButton = document.createElement('button')
   const addButton = document.createElement('button')
   const amountText = document.createElement('span')
+  const binButton = document.createElement('button')
+  const binIcon = document.createElement('i')
 
-  ammountContainer.className = 'cart-product-amount'
+  amountManager.className = 'cart-product-amount'
   subTrackButton.className = 'subtrack-button-amount'
   addButton.className = 'add-button-amount'
+  ammountContainer.className = 'ammount-container'
+  binButton.className = 'bin-button'
+  binIcon.className = 'fa-solid fa-trash'
 
   subTrackButton.innerText = '-'
   addButton.innerText = '+'
   amountText.innerText = amount
 
-  ammountContainer.appendChild(subTrackButton)
-  ammountContainer.appendChild(amountText)
-  ammountContainer.appendChild(addButton)
+  amountManager.appendChild(subTrackButton)
+  amountManager.appendChild(amountText)
+  amountManager.appendChild(addButton)
+  binButton.appendChild(binIcon)
+
+  ammountContainer.appendChild(amountManager)
+  ammountContainer.appendChild(binButton)
 
   productContainer.appendChild(ammountContainer)
 
@@ -50,6 +61,11 @@ const createAmountComponent = (productContainer, productid, amount) => {
 
   subTrackButton.addEventListener('click', () => {
     reduceProductFromCart(productid)
+    printCart()
+  })
+
+  binButton.addEventListener('click', () => {
+    reduceProductFromCart(productid, true)
     printCart()
   })
 }

@@ -8,6 +8,7 @@ import {
 } from './checkout/checkoutValidations.js'
 
 const submitBtn = document.getElementById('btn')
+
 submitBtn.addEventListener('click', (event) => {
   validate()
 })

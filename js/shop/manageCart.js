@@ -12,7 +12,10 @@ const addToTotalItemsCount = () => {
   updateCount()
 }
 
-const reduceTotalItemsCount = () => {
+const reduceTotalItemsCount = (amount = undefined) => {
+  if (amount) {
+    storeStatus.itemsCount = storeStatus.itemsCount - amount
+  }
   storeStatus.itemsCount--
   updateCount()
 }
@@ -23,7 +26,7 @@ const addNewProduct = (id) => {
   storeStatus.cart.find((product) => product.id === id).amount = 1
 }
 
-const deleteExistingProduct = (id) => {
+export const deleteExistingProduct = (id) => {
   storeStatus.cart = storeStatus.cart.filter((product) => product.id !== id)
 }
 
@@ -41,11 +44,17 @@ export const addProductToCart = (id) => {
   addToTotalItemsCount()
 }
 
-export const reduceProductFromCart = (id) => {
-  const hasMoreThanOne =
-    storeStatus.cart.find((product) => product.id === id).amount > 1
-  hasMoreThanOne ? reduceAmountOfProduct(id) : deleteExistingProduct(id)
-  reduceTotalItemsCount()
+export const reduceProductFromCart = (id, del = false) => {
+  let totalItems = storeStatus.cart.find((product) => product.id === id).amount
+  const hasMoreThanOne = totalItems > 1
+
+  if (!hasMoreThanOne || del) {
+    deleteExistingProduct(id)
+    reduceTotalItemsCount(totalItems - 1)
+  } else {
+    reduceAmountOfProduct(id)
+    reduceTotalItemsCount()
+  }
 }
 
 export const calculateTotal = () => {
