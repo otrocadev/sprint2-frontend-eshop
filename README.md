@@ -33,3 +33,14 @@ To get a local copy up and running follow these simple steps:
 4.	**Open index.html in your browser**
 -	You can simply double-click the file
 -	Or use Live Server if you work with VS Code
+
+## 🏗️ Things to improve the shop
+
+I will list a few things that I would like to implement in the case of expanding the project or having more time to invest on it:
+
+- [ ] Implement a way to save the cart status from one page to another. There are two main ways possible in my opinion:
+   - Using a framework that allows us to have a global status (for a more robust project).
+   - Implementing the localStorage API methods to retrieve and storage this data on the memory and loading it when needed. (Better fit for the scope of this project).
+- [ ] Implement banners on the products that have promotions so the user can be aware of them.
+- [ ] Better mobile compatibility.
+
